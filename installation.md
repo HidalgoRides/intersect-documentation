@@ -29,7 +29,7 @@ Intersect Framework manages its dependencies through [Composer](https://getcompo
 If you have PHP installed on your machine, and the version is compatible, you can start a local PHP server by running the following commands:
 
     cd my-project/public
-    php -S http://localhost:8080
+    php -S localhost:8080
 
 You should now be able to access your local server by navigating to http://localhost:8080 in your browser of choice.
 
