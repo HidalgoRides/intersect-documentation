@@ -18,9 +18,9 @@
 
 Models provide an easy way to interact with your database. Each database table you create would have a corresponding `Model` created to interact with it. By extending the `Intersect\Database\Model\Model` class, you inherit all the core functionality you will need to create, read, update, and delete records in your database.
 
-By default, the table names with be assumed based on the name of your model class. It will try to determine the table name by converting the class name into its pluralized version. You are however able to specify the `$tableName` property yourself to provide a different table name than the assumed one.
+By default, the table names will be assumed based on the name of your model class. We will will try to determine the table name by converting your class name into its lowercase pluralized version (ex: Example -> examples). Any uppercase letters beyond the first letter will be converted into `_` characters (ex: ExampleCode => examples_codes). However, you may override the model classes `$tableName` property yourself to provide a different table name than the assumed one.
 
-Each `Model` also assumes the primary key for each table is the `id` column. You can override this column value by specifying the `primaryKey` property
+Each `Model` also assumes the primary key for each table is the `id` column. You can override this column value by specifying the `primaryKey` property.
 
 <a name="example-model"></a>
 ### Example Model
@@ -34,10 +34,10 @@ Each `Model` also assumes the primary key for each table is the `id` column. You
     class Example extends Model {
 
         // optional property to specify the primary key column
-        protected $primaryKey = 'id';
+        // protected $primaryKey = 'different_id_column';
 
         // optional property to specify table name
-        protected $tableName = 'examples';
+        // protected $tableName = 'different_table_name';
 
     }
 
