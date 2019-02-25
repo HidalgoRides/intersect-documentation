@@ -83,6 +83,9 @@ The response of `$newExample` should be a fully populated `Example` model object
 
 Your `Model` comes with helper methods to retrieve data from your database. Here are the method definitions you have access to:
 
+    // returns the count of all records based on *optional* QueryParameters object passed in. if QueryParameters are not passed in, the count will be based off all records that exist
+    Example::count(QueryParameters?);
+
     // returns array of all records based on *optional* QueryParameters object passed in. if null is passed in, returns array of all records
     Example::find(QueryParameters?);
 
@@ -119,7 +122,15 @@ Here are some example usages of `Model` retrieval using `QueryParameters`. Note 
     use App\Example;
     use Intersect\Database\Query\QueryParameters;
 
-    // find all models where description equal to "Intersect"
+    // find the count of all records
+    $count = Example::count();
+
+    // find the count of records where description equals "Intersect"
+    $queryParameters = new QueryParameters();
+    $queryParameters->equals('description', 'Intersect');
+    $count = Example::count($queryParameters);
+
+    // find all models where description equals "Intersect"
     $queryParameters = new QueryParameters();
     $queryParameters->equals('description', 'Intersect');
     $results = Example::find($queryParameters);
