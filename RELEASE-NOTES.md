@@ -55,6 +55,12 @@
   public function index($columns, $keyName = null) {}
   ```
 
+- Updated model relationship methods to accept an optional `Intersect\Database\Query\QueryParameters` object to allow for further narrowing down relationship data.
+  ```php
+  public function hasMany($joiningClassName, $column, QueryParameters $queryParameters = null) {}
+  public function hasOne($joiningClassName, $column, QueryParameters $queryParameters = null) {}
+  ```
+
 - Enhanced `Intersect\Core\Http\Request` to allow direct constructor access and added the following new method signatures:
   
   ```php
