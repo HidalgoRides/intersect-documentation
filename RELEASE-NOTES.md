@@ -23,6 +23,14 @@
   public function groupOr(Closure $closure) {}
   ```
 
+- Added support to `Intersect\Database\Query\QueryParameters` to allow for querying data by values that are greaterThan, greaterThanOrEqual, lessThan, or lessThanOrEqual.
+  ```php
+  public function greaterThan($key, $value) {}
+  public function greaterThanOrEqual($key, $value) {}
+  public function lessThan($key, $value) {}
+  public function lessThanOrEqual($key, $value) {}
+  ```
+
 - Added support to truncate a given model's table data.
   ```php
   Model::truncate();
@@ -79,6 +87,8 @@
 ## Bug Fixes
 
 - Fixed an issue where foreign keys that were added, using the `Intersect\Database\Schema\Blueprint` object during migration scripts, that were not provided with a `keyName` parameter, were causing conflicts with other tables that had foreign keys on the same table/columns
+
+- Fixed an issue where Postgres insert queries were throws PDOExceptions when the underlying table did not have a primary key set.
 
 ---
 ## Deprecated Methods
