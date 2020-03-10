@@ -2,7 +2,7 @@
 
 ## Features Added
 
-- Added middleware support which allows direct access to the request before the actual request is executed. This is be used as a way to short-circuit a request if some conditions are not met, ex: authenticate the user or redirect/respond accordingly. Middleware can be applied globally, at the route group level to apply only for those routes, or at the individual route level.
+- Added middleware support which allows direct access to the request before the actual request is executed. This can be used as a way to short-circuit a request if some conditions are not met, ex: authenticate the user or redirect/respond accordingly. Middleware can be applied globally, at the route group level to apply only for those routes, or at the individual route level.
 
 - Added new `Intersect\Core\Http\Router\NamedRoute` class which allows specifying a given name for a route; which can later be used for redirection to another route by name or other scenarios.
 
@@ -11,6 +11,11 @@
 - Added support for nested `Intersect\Core\Http\Router\RouteGroup` objects.
 
 - Added `Intersect\Services\RedisService` service class for helping with interacting with Redis (see service class documentation for prerequesites)
+
+- Added support to `Intersect\Database\Query\QueryParameters` to allow for paginated queries. By providing a `start` value, the underlying queries will pull data based off the starting position you specified (must be used in conjunction with the existing `limit` (new) or `setLimit` (old/deprecated) method)
+  ```php
+  public function start($start) {}
+  ```
 
 - Added support to `Intersect\Database\Query\QueryParameters` to allow grouping query conditions together. Both AND and OR conditions are supported now.
   ```php
