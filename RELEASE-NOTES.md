@@ -1,6 +1,24 @@
 # Intersect 1.3.0 Release Notes
 
+## Breaking Changes
+
+- Model classes based off of the `Intersect\Database\Model\AssociativeModel` class need to add/update the following methods to your model classes:
+  ```php
+  // update the following methods from protected to public (shown is old format)
+  protected function getColumnOneName() {}
+  protected function getColumnTwoName();
+
+  // add the following methods. the return value show be the class name that the association table column actually refers to. 
+  public function getColumnOneClassName() {}
+  public function getColumnTwoClassName() {}
+
+  // ex: column one name is `user_id`, which actually refers to a Model you have named `User`. the return value would be `return User::class;`
+  ```
+
+---
 ## Features Added
+
+- Added support for auto-resolving model relationships that are based on a `Intersect\Database\Model\AssociativeModel` class.
 
 - Added middleware support which allows direct access to the request before the actual request is executed. This can be used as a way to short-circuit a request if some conditions are not met, ex: authenticate the user or redirect/respond accordingly. Middleware can be applied globally, at the route group level to apply only for those routes, or at the individual route level.
 
@@ -95,6 +113,8 @@
 - Fixed an issue where foreign keys that were added, using the `Intersect\Database\Schema\Blueprint` object during migration scripts, that were not provided with a `keyName` parameter, were causing conflicts with other tables that had foreign keys on the same table/columns
 
 - Fixed an issue where Postgres insert queries were throws PDOExceptions when the underlying table did not have a primary key set.
+
+- Fixed an issue where not all Model methods for interacting with data were exposed to all model types.
 
 ---
 ## Deprecated Methods
