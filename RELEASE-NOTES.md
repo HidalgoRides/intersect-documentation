@@ -18,6 +18,8 @@
 ---
 ## Features Added
 
+- Added automation during initial project installation so that configuration files are copied correctly and application keys are generated properly.
+
 - Added support for auto-resolving model relationships that are based on a `Intersect\Database\Model\AssociativeModel` class.
 
 - Added middleware support which allows direct access to the request before the actual request is executed. This can be used as a way to short-circuit a request if some conditions are not met, ex: authenticate the user or redirect/respond accordingly. Middleware can be applied globally, at the route group level to apply only for those routes, or at the individual route level.
