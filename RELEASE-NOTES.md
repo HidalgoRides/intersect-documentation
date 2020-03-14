@@ -18,6 +18,10 @@
 ---
 ## Features Added
 
+- Updated base docker image to use Alpine-based images with Nginx and PHP-FPM.
+
+- Added more example class files for showing basic model and migrations files.
+
 - Added automation during initial project installation so that configuration files are copied correctly and application keys are generated properly.
 
 - Added support for auto-resolving model relationships that are based on a `Intersect\Database\Model\AssociativeModel` class.
@@ -117,6 +121,8 @@
 - Fixed an issue where Postgres insert queries were throws PDOExceptions when the underlying table did not have a primary key set.
 
 - Fixed an issue where not all Model methods for interacting with data were exposed to all model types.
+
+- Updated usages of some deprecated methods from PHP 7.1.3 upgrade
 
 ---
 ## Deprecated Methods
