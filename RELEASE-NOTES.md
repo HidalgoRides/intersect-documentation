@@ -118,6 +118,8 @@
 
 - Fixed an issue where not all Model methods for interacting with data were exposed to all model types.
 
+- Fixed an issue in `Intersect\Core\Http\Request` where JSON string inputs were not being properly parsed into the Request data property.
+
 ---
 ## Deprecated Methods
 
@@ -135,3 +137,8 @@ public function setColumns($columns = []) {} // use columns
 public function setLimit($limit) {} // use limit
 public function setOrder($order) {} // use order
 ```
+
+---
+## Miscellaneous
+
+- Removed irrelevant configuration for `app.cors.enabled` used in `Intersect\Providers\CorsProvider` since the inclusion of the provider means it is enabled.
